@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+   <head>
+	  <link rel="icon" href="../static/MJRoBot_Avatar_1.jpg">
+	  <meta charset="UTF-8">
+      <title>LungInf</title>
+      <link rel="stylesheet" href='../static/style.css'/>
+       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            body {
+                background: #858383;
+                color: white;
+                text-align: center;
+                font-family: Arial;
+            }
+        </style>
+   </head>
+ <body>
+	 <img src="{{ url_for('static', filename='lungInfection.jpg')}}" width="20%"/>
+    <h1>CT</h1>
+    <h1>Lung Infection Region Detection using AI</h1>
+    <h2>Proof-of-concept Application</h2>
+	<hr>
+    <h3>[WARNING] - Only for didactic purposes (See Disclaimer at bottom)</h3>
+ 	<hr>
+    <!--链接回query函数的url-->
+	<form action="{{ url_for('LungSegquery') }}" method = "POST" enctype = "multipart/form-data">
+        <input type = "file" name = "file" />
+        <input type = "submit"/>
+    </form>
+    <hr>
+    <h2>Analysis Result :</h2>
+     <br>
+    <h3> Image File Name: {{filename}} </h3>
+     <h4 style="color: purple">Ground-glass opacity (GGO)</h4>
+      <h4 style="color: greenyellow">Pulmonary consolidation</h4>
+    <table align="center"><tr>
+        <td><img src="{{ ori_lung_image }}" , width="100%"></td>
+        <td><img src="{{Seg_lung_image }}" , width="70%"></td>
+    </tr></table>
+
+
+     <br>
+     <p align="center"> <a href= "http://127.0.0.1:5000/"/><button class="button" style="font-size:15px; height: 50px;width: 70px">Back</button> </a>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href= "http://127.0.0.1:5004/"/><button class="button" style="font-size:15px; height: 50px;width: 70px">Clear</button> </a>
+     </p>
+
+     <h4>Disclaimer</h4>
+     <p>This deployment of an automatic COVID-19 detection is for educational purposes only. It is not meant to be a reliable, highly accurate COVID-19 diagnosis system, nor has it been professionally or academically vetted.<p/>
+   </body>
+</html>

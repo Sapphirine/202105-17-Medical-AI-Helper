@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jan 24 21:16:24 2019
+
+@author: 37112
+"""
+import os
+import cv2
+import numpy as np
+import xml.etree.ElementTree
+try:
+    import xml.etree.cElementTree as ET
+except ImportError:
+    import xml.etree.ElementTree as ET
+
+
+
+annpath = '/Users/maxgeng/Study/FYP/Code/dataset/Latest/LatestAnnotations/'
+
+a = os.listdir(annpath)
+#n = 0  
+a1=sorted(a)
+
+for i in a1:
+    name = os.path.splitext(i)[0]
+    img_name = name+'.jpg'  
+
+    doc = ET.parse(annpath+i)
+    root = doc.getroot()
+    sub1 = root.find('filename')
+    sub1.text=img_name
+    
